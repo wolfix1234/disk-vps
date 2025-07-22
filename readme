@@ -1,0 +1,58 @@
+function create folder on signup:
+
+curl -X GET "http://localhost:5000/init-store?storeId=store123" \
+  -H "Authorization: Bearer your-secret-token" 
+
+
+post for upload image:
+// add the domain of the vps on the response too
+
+curl -X POST "http://localhost:5000/upload/image" \
+  -H "Authorization: Bearer your-secret-token" \
+  -F "storeId=store123" \
+  -F "file=@aks.jpg"
+
+
+DELETE image:
+
+curl -X DELETE "http://localhost:5000/delete/image" \
+  -H "Authorization: Bearer your-secret-token" \
+  -H "Content-Type: application/json" \
+  -d '{"storeId": "store123", "filename": "product.jpg"}'
+
+
+GET list images:
+
+curl -X GET "http://91.216.104.8:5000/images/test2" \
+ -H "Authorization: Bearer your-secret-token" 
+
+
+
+
+//////////////json
+
+
+
+
+POST json file:
+
+curl -X POST "http://localhost:5000/json?storeId=store123&filename=ghasem.json" \
+  -H "Authorization: Bearer your-secret-token" \
+  -H "Content-Type: application/json" \
+  -d '{"key": "value"}'
+
+
+Get the content of the json:
+
+curl -X GET "http://91.216.104.8:5000/json" \
+  -H "Authorization: Bearer your-secret-token" \
+  -H "storeId: ghasem" \
+  -H "filename: aboutlg.json"
+
+
+
+GET list json files:
+
+curl -X GET "http://91.216.104.8:5000/json/<storeId>" \
+  -H "Authorization: Bearer your-secret-token"
+  

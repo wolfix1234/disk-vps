@@ -6,8 +6,11 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from PIL import Image
 import uuid
+import logging
 
 
+
+logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 CORS(app, resources={r"/uploads/*": {"origins": ["http://localhost:3000"]}, r"/upload/*": {"origins": ["http://localhost:3000"]}, r"/delete/*": {"origins": ["http://localhost:3000"]}})
 
@@ -194,9 +197,9 @@ def init_store():
     if not authorized(request):
         return jsonify({"error": "Unauthorized"}), 401
 
-    store_id = request.headers.get("Store-Id")
+    store_id = request.headers.get("storeId")
     if not store_id:
-        return jsonify({"error": "Missing Store-Id in header"}), 400
+        return jsonify({"error": "Missing storeId in header"}), 400
 
     store_path = os.path.join(UPLOAD_FOLDER, store_id)
     store_json_path = os.path.join(store_path, "json")
@@ -215,13 +218,23 @@ def init_store():
     return jsonify({"message": "Store initialized with templates" , "url": f"http://91.216.104.8/{store_id}/json"}), 200
 
 
+
+
+# get file content and update file content
 @app.route("/json", methods=["GET", "POST"])
 def handle_json():
     if not authorized(request):
         return jsonify({"error": "Unauthorized"}), 401
+    
+    logging.debug(f"Request method: {request.headers}")
 
-    store_id = request.args.get("storeId")
-    filename = request.args.get("filename")
+    store_id = request.headers.get("storeId")
+    logging.debug(f"Store ID: {store_id}")
+
+    filename = request.headers.get("filename")
+    logging.debug(f"Filename: {filename}")
+    
+
 
     # Validate inputs
     if not store_id or not filename:
@@ -251,7 +264,7 @@ def handle_json():
             return jsonify({"error": "File not found"}), 404
 
         try:
-            with open(full_path, "r") as f:
+            with open(full_path, "r", encoding="utf-8") as f:
                 content = f.read().strip()
                 if not content:
                     return jsonify({"error": "File is empty"}), 400
@@ -291,6 +304,37 @@ def handle_json():
             if os.path.exists(temp_path):
                 os.remove(temp_path)
             return jsonify({"error": f"Error updating file: {str(e)}"}), 500
+        
+
+
+
+# get list of json files
+@app.route("/json/<store_id>", methods=["GET"])
+def get_json_names(store_id):
+    if not authorized(request):
+        return jsonify({"error": "Unauthorized"}), 401
+
+    # Build and validate safe path
+    try:
+        base_path = os.path.abspath(UPLOAD_FOLDER)
+        json_path = os.path.abspath(os.path.join(base_path, store_id, "json"))
+        if not json_path.startswith(base_path):
+            return jsonify({"error": "Invalid path"}), 400
+    except Exception:
+        return jsonify({"error": "Invalid path construction"}), 400
+
+    # Check if directory exists
+    if not os.path.exists(json_path):
+        return jsonify({"error": f"Store ID {store_id} does not exist"}), 404
+
+    # Get list of JSON files
+    try:
+        json_files = [f for f in os.listdir(json_path) if f.endswith('.json')]
+        return jsonify({"json_files": json_files}), 200
+    except Exception as e:
+        return jsonify({"error": f"Error reading JSON files: {str(e)}"}), 500
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
