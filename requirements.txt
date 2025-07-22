@@ -4,4 +4,4 @@ flask-cors
 Pillow
 Werkzeug
 gunicorn
-CORS
+flask_limiter

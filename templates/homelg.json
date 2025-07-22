@@ -1,0 +1,909 @@
+{
+  "type": "layout",
+  "settings": {
+    "fontFamily": "Arial, sans-serif",
+    "colorSchema": {
+      "primary": "#3498db",
+      "secondary": "#2ecc71",
+      "text": "#333333"
+    }
+  },
+  "sections": {
+    "sectionHeader": {
+      "blocks": {
+        "imageLogo": "/assets/images/logo.webp",
+        "imageAlt": "دیجی‌کالا",
+        "links": [
+          {
+            "name": "دسته‌بندی کالاها",
+            "url": "/categories",
+            "megaMenu": [
+              {
+                "title": "کالای دیجیتال",
+                "items": [
+                  {
+                    "name": "گوشی موبایل",
+                    "url": "/mobile"
+                  },
+                  {
+                    "name": "لپ تاپ",
+                    "url": "/laptop"
+                  },
+                  {
+                    "name": "تبلت",
+                    "url": "/tablet"
+                  }
+                ]
+              },
+              {
+                "title": "لوازم خانگی",
+                "items": [
+                  {
+                    "name": "یخچال",
+                    "url": "/refrigerator",
+                    "image": "/assets/images/fridge.jpg"
+                  },
+                  {
+                    "name": "ماشین لباسشویی",
+                    "url": "/washing-machine",
+                    "image": "/assets/images/washer.jpg"
+                  }
+                ]
+              },
+              {
+                "title": "لوازم خانگی",
+                "items": [
+                  {
+                    "name": "یخچال",
+                    "url": "/refrigerator",
+                    "image": "/assets/images/fridge.jpg"
+                  },
+                  {
+                    "name": "ماشین لباسشویی",
+                    "url": "/washing-machine",
+                    "image": "/assets/images/washer.jpg"
+                  }
+                ]
+              },
+              {
+                "title": "لوازم خانگی",
+                "items": [
+                  {
+                    "name": "یخچال",
+                    "url": "/refrigerator",
+                    "image": "/assets/images/fridge.jpg"
+                  },
+                  {
+                    "name": "ماشین لباسشویی",
+                    "url": "/washing-machine",
+                    "image": "/assets/images/washer.jpg"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "درباره ما",
+            "url": "/about"
+          },
+          {
+            "name": "وبلاگ",
+            "url": "/blog"
+          },
+          {
+            "name": "تماس با ما",
+            "url": "/contact"
+          },
+          {
+            "name": "سوالات متداول",
+            "url": "/faq"
+          }
+        ],
+        "setting": {
+          "imageWidth": "60",
+          "imageHeight": "60",
+          "imageRadius": "30",
+          "itemColor": "#1a1919",
+          "itemFontSize": "14",
+          "itemFontWeight": "normal",
+          "itemHoverColor": "#eb0fbb",
+          "backgroundColorNavbar": "#FCA311",
+          "searchBarBorderColor": "#E5E7EB",
+          "searchBarBorderRadius": "9999",
+          "buttonBorderColor": "#E5E7EB",
+          "buttonBorderRadius": "8",
+          "locationButtonBgColor": "#FFF7ED",
+          "locationButtonTextColor": "#EA580C",
+          "announcementText": "ارسال رایگان برای خرید‌ بالای ۵۰۰ هزار تومان!",
+          "announcementBgColor": "#eb0fbb",
+          "announcementTextColor": "#ffffff",
+          "announcementFontSize": "14",
+          "bgColor": "#ffffff",
+          "gap": "31",
+          "megaMenuBg": "#fcfcfc",
+          "categoryItemColor": "#1c1c17",
+          "categoryItemSize": "18",
+          "categoryItemHoverColor": "#080808"
+        }
+      },
+      "setting": {
+        "paddingTop": "0",
+        "paddingBottom": "21",
+        "paddingLeft": "0",
+        "paddingRight": "0",
+        "marginTop": "0",
+        "marginBottom": "17",
+        "navbarPosition": "fixed",
+        "bgColor": "#ffffff"
+      },
+      "type": "header"
+    },
+    "children": {
+      "metaData": {
+        "title": "Home",
+        "description": "Home page of the website"
+      },
+      "sections": [
+        {
+          "type": "CanvasEditor-93e6a0f4",
+          "setting": {
+            "paddingTop": "20",
+            "paddingBottom": "20",
+            "paddingLeft": "20",
+            "paddingRight": "20",
+            "marginTop": "30",
+            "marginBottom": "30",
+            "backgroundColor": "#ffffff"
+          },
+          "blocks": {
+            "elements": [
+              {
+                "id": "87237585-bde4-4627-9394-5bc578005c35",
+                "type": "heading",
+                "content": "عنوان جدید",
+                "style": {
+                  "x": 449.3332926432292,
+                  "y": 11.666666666666668,
+                  "width": 151.66666666666669,
+                  "height": 60,
+                  "fontSize": 31,
+                  "fontWeight": "bold",
+                  "color": "#000000",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
+                  "padding": 0,
+                  "textAlign": "right",
+                  "zIndex": 6
+                }
+              },
+              {
+                "id": "85ce446e-8a3f-4737-8237-a9b2cea7c0e3",
+                "type": "image",
+                "content": "",
+                "style": {
+                  "x": 5,
+                  "y": 0,
+                  "width": 633.3333333333334,
+                  "height": 500,
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "color": "#000000",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 43,
+                  "padding": 0,
+                  "textAlign": "right",
+                  "zIndex": 1
+                },
+                "src": "https://www.stratstone.com/-/media/stratstone/blog/2024/top-10-best-supercars-of-2024/mclaren-750s-driving-dynamic-hero-1920x774px.ashx",
+                "alt": "Canvas image"
+              }
+            ],
+            "setting": {
+              "canvasWidth": "100%",
+              "canvasHeight": "500px",
+              "backgroundColor": "#f9fafb",
+              "gridSize": 10,
+              "showGrid": false
+            }
+          }
+        },
+        {
+          "type": "CanvasEditor-93e6a0f4",
+          "setting": {
+            "paddingTop": "20",
+            "paddingBottom": "20",
+            "paddingLeft": "20",
+            "paddingRight": "20",
+            "marginTop": "30",
+            "marginBottom": "30",
+            "backgroundColor": "#ffffff"
+          },
+          "blocks": {
+            "elements": [
+              {
+                "id": "87237585-bde4-4627-9394-5bc578005c35",
+                "type": "heading",
+                "content": "عنوان جدید",
+                "style": {
+                  "x": 449.3332926432292,
+                  "y": 11.666666666666668,
+                  "width": 151.66666666666669,
+                  "height": 60,
+                  "fontSize": 31,
+                  "fontWeight": "bold",
+                  "color": "#000000",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
+                  "padding": 0,
+                  "textAlign": "right",
+                  "zIndex": 6
+                }
+              },
+              {
+                "id": "85ce446e-8a3f-4737-8237-a9b2cea7c0e3",
+                "type": "image",
+                "content": "",
+                "style": {
+                  "x": 5,
+                  "y": 0,
+                  "width": 633.3333333333334,
+                  "height": 500,
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "color": "#000000",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 43,
+                  "padding": 0,
+                  "textAlign": "right",
+                  "zIndex": 1
+                },
+                "src": "https://www.stratstone.com/-/media/stratstone/blog/2024/top-10-best-supercars-of-2024/mclaren-750s-driving-dynamic-hero-1920x774px.ashx",
+                "alt": "Canvas image"
+              }
+            ],
+            "setting": {
+              "canvasWidth": "100%",
+              "canvasHeight": "500px",
+              "backgroundColor": "#f9fafb",
+              "gridSize": 10,
+              "showGrid": false
+            }
+          }
+        },
+        {
+          "type": "ImageText-8d6d4e85",
+          "blocks": {
+            "imageSrc": "/assets/images/banner3.jpg",
+            "imageAlt": "",
+            "heading": "لورم ایپسوم متن ساختگی",
+            "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\n\n",
+            "btnLink": "/",
+            "btnText": "دکمه",
+            "setting": {
+              "headingColor": "#5c5c5c",
+              "headingFontSize": "50",
+              "headingFontWeight": "bold",
+              "descriptionColor": "#eb0fee",
+              "descriptionFontSize": "15",
+              "descriptionFontWeight": "normal",
+              "btnTextColor": "#ffffff",
+              "btnBackgroundColor": "#eb0fee",
+              "backgroundColorBox": "",
+              "backgroundBoxOpacity": 0.9,
+              "boxRadiuos": "62",
+              "opacityImage": "1",
+              "imageWidth": "794",
+              "imageHeight": "280",
+              "background": "#f0f0f0",
+              "imageAnimation": {
+                "type": "hover",
+                "animation": {
+                  "type": "glow",
+                  "duration": "1.7s",
+                  "timing": "ease-in",
+                  "delay": "0s",
+                  "iterationCount": "1",
+                  "intensity": "normal"
+                }
+              },
+              "buttonAnimation": {
+                "type": "hover",
+                "animation": {
+                  "type": "blur",
+                  "duration": "1s",
+                  "timing": "ease-in-out",
+                  "delay": "0s",
+                  "iterationCount": "1",
+                  "intensity": "normal"
+                }
+              }
+            }
+          },
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "paddinRight": "0",
+            "paddinLeft": "0"
+          }
+        },
+        {
+          "type": "RichText-51d219c2",
+          "blocks": {
+            "imageSrc": "",
+            "imageAlt": "",
+            "heading": "",
+            "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\n\n",
+            "textHeading": "سربرگ اصلی",
+            "btnText": "دکمه",
+            "btnLink": "store",
+            "setting": {
+              "textHeadingColor": "#fcfcfc",
+              "textHeadingFontSize": "46",
+              "textHeadingFontWeight": "bold",
+              "descriptionColor": "#ffffff",
+              "descriptionFontSize": "16",
+              "descriptionFontWeight": "bold",
+              "background": "#eb0fee",
+              "btnTextColor": "#582222",
+              "btnBackgroundColor": "#f3f2f2",
+              "lineWidth": "340",
+              "lineHeight": "6",
+              "lineTop": "-25",
+              "lineBottom": "39",
+              "lineColor": "#de2121"
+            }
+          },
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "0",
+            "marginBottom": "20",
+            "paddinRight": "0",
+            "paddinLeft": "0",
+            "paddingLeft": "20",
+            "paddingRight": "20"
+          }
+        },
+        {
+          "type": "CollapseFaq-ae258c70",
+          "blocks": [
+            {
+              "text1": "سوال متداول  1",
+              "content1": "پاسخ سوال متداول 1",
+              "setting": {
+                "textColor1": "#110e0e",
+                "textFontSize1": "20",
+                "textFontWeight1": "bold",
+                "contentColor1": "#eb0fee",
+                "contentFontSize1": "14",
+                "contentFontWeight1": "normal"
+              },
+              "links": [],
+              "heading": "سوالات متداول ما"
+            },
+            {
+              "text2": "سوال متداول 2",
+              "content2": "پاسخ سوال متداول 2",
+              "setting": {
+                "textColor2": "#0d0c0c",
+                "textFontSize2": "20",
+                "textFontWeight2": "bold",
+                "contentColor2": "#eb0fee",
+                "contentFontSize2": "14",
+                "contentFontWeight2": "normal"
+              },
+              "links": []
+            },
+            {
+              "text3": "سوال متداول 3",
+              "content3": "پاسخ سوال متداول 3",
+              "setting": {
+                "textColor3": "#0d0d0d",
+                "textFontSize3": "20",
+                "textFontWeight3": "bold",
+                "contentColor3": "#eb0fee",
+                "contentFontSize3": "14",
+                "contentFontWeight3": "normal"
+              },
+              "links": []
+            },
+            {
+              "text4": "سوال متداول 4",
+              "content4": "پاسخ سوال متداول 4",
+              "setting": {
+                "textColor4": "#100f0f",
+                "textFontSize4": "20",
+                "textFontWeight4": "bold",
+                "contentColor4": "#eb0fee",
+                "contentFontSize4": "14",
+                "contentFontWeight4": "normal"
+              },
+              "links": []
+            }
+          ],
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "paddinRight": "0",
+            "paddinLeft": "0",
+            "headingColor": "#eb0fee",
+            "headingFontSize": "45",
+            "headingFontWeight": "lighter",
+            "background": "#ffffff",
+            "borderRadious": "20",
+            "paddingLeft": "150",
+            "paddingRight": "150"
+          },
+          "heading": "آکاردئون های متداول"
+        },
+        {
+          "type": "Banner-dea4624e",
+          "blocks": {
+            "imageSrc": "/assets/images/ban.jpg",
+            "imageAlt": "",
+            "heading": "",
+            "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\n\n",
+            "text": "",
+            "setting": {
+              "descriptionColor": "#f7f7f7",
+              "descriptionFontSize": "14",
+              "descriptionFontWeight": "bold",
+              "textColor": "#fcfcfc",
+              "textFontSize": "44",
+              "textFontWeight": "bold",
+              "backgroundColorBox": "#eb0fee",
+              "backgroundBoxRadious": "17",
+              "opacityImage": "0.9",
+              "opacityTextBox": "0.8",
+              "imageRadious": "14",
+              "imageBehavior": "cover",
+              "animations": {
+                "effects": [
+                  {
+                    "type": "click",
+                    "animation": {
+                      "type": "pulse",
+                      "duration": "1s",
+                      "timing": "cubic-bezier(0, 0, 0.2, 1)",
+                      "delay": "0s",
+                      "iterationCount": "2"
+                    }
+                  }
+                ]
+              },
+              "animation": {
+                "type": "hover",
+                "animation": {
+                  "type": "blur",
+                  "duration": "1.5s",
+                  "timing": "ease-in-out",
+                  "delay": "0s",
+                  "iterationCount": "5",
+                  "intensity": "normal"
+                }
+              }
+            }
+          },
+          "setting": {
+            "paddingTop": "0",
+            "paddingBottom": "0",
+            "marginTop": "0",
+            "marginBottom": "0",
+            "imageBehavior": "cover",
+            "paddingLeft": "0",
+            "paddingRight": "0"
+          }
+        },
+        {
+          "type": "MultiRow-1e268611",
+          "title": "سربرگ ردیف ها",
+          "blocks": {
+            "0": {
+              "heading": "ردیف اول",
+              "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+              "btnLable": "دکمه اول",
+              "btnLink": "",
+              "imageSrc": "/assets/images/banner1.jpg",
+              "imageAlt": ""
+            },
+            "1": {
+              "heading": "ردیف دوم",
+              "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+              "btnLable": "دکمه دوم",
+              "btnLink": "",
+              "imageSrc": "/assets/images/banner3.jpg",
+              "imageAlt": ""
+            },
+            "imageSrc": "",
+            "imageAlt": "",
+            "heading": "",
+            "description": ""
+          },
+          "setting": {
+            "titleColor": "#0c0d0d",
+            "titleFontWeight": "bold",
+            "titleFontSize": "43",
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "paddinRight": "0",
+            "paddinLeft": "0",
+            "backgroundColorMultiRow": "#ffffff",
+            "backgroundColorBox": "#fcfcfc",
+            "imageWidth": "859",
+            "imageHeight": "318",
+            "imageRadius": "54",
+            "headingColor": "#eb0fee",
+            "headingFontSize": "36",
+            "headingFontWeight": "normal",
+            "descriptionColor": "#000000",
+            "descriptionFontSize": "15",
+            "descriptionFontWeight": "normal",
+            "btnColor": "#ffffff",
+            "btnBackgroundColor": "#eb0fee",
+            "imageAlign": "row"
+          }
+        },
+        {
+          "type": "Gallery-0cf7ee41",
+          "blocks": {
+            "imageSrc": "",
+            "imageAlt": "",
+            "heading": "",
+            "description": " ",
+            "title": " ",
+            "images": [
+              {
+                "imageSrc": "/assets/images/digi4baners.webp",
+                "imageAlt": "Gallery Image 1",
+                "imageLink": "#"
+              },
+              {
+                "imageSrc": "/assets/images/digi 4 banners4.webp",
+                "imageAlt": "Gallery Image 2",
+                "imageLink": "#"
+              },
+              {
+                "imageSrc": "/assets/images/digi4banners2.webp",
+                "imageAlt": "Gallery Image 1",
+                "imageLink": "#"
+              },
+              {
+                "imageSrc": "/assets/images/digi4banners3.webp",
+                "imageAlt": "Gallery Image 2",
+                "imageLink": "#"
+              }
+            ],
+            "setting": {
+              "titleColor": "#333333",
+              "titleFontSize": "32",
+              "titleFontWeight": "bold",
+              "descriptionColor": "#666666",
+              "descriptionFontSize": "16",
+              "descriptionFontWeight": "normal",
+              "background": "#ffffff",
+              "imageWidth": "590",
+              "imageHeight": "200",
+              "imageRadius": "8",
+              "gridColumns": "2",
+              "gridGap": "20",
+              "imageAnimation": {
+                "type": "hover",
+                "animation": {
+                  "type": "blur",
+                  "duration": "1s",
+                  "timing": "ease-in-out",
+                  "delay": "0s",
+                  "iterationCount": "1",
+                  "intensity": "normal"
+                }
+              }
+            }
+          },
+          "setting": {
+            "paddingTop": "0",
+            "paddingBottom": "0",
+            "marginTop": "0",
+            "marginBottom": "0",
+            "paddingRight": "0",
+            "paddingLeft": "0"
+          }
+        },
+        {
+          "type": "ContactForm-aaf2234d",
+          "blocks": {
+            "imageSrc": "",
+            "imageAlt": "",
+            "heading": "فرم ارتباط با ما",
+            "description": "",
+            "setting": {
+              "headingColor": "#ee2b2b",
+              "headingFontSize": "79",
+              "headingFontWeight": "lighter",
+              "btnBackgroundColor": "#30529c",
+              "btnTextColor": "#e5d7d7",
+              "formBackground": "#fdb23a",
+              "btnAnimation": {
+                "type": "hover",
+                "animation": {
+                  "type": "opacity",
+                  "duration": "1s",
+                  "timing": "ease-in-out",
+                  "delay": "0s",
+                  "iterationCount": "1",
+                  "intensity": "normal"
+                }
+              }
+            }
+          },
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "paddinRight": "0",
+            "paddinLeft": "0"
+          }
+        },
+        {
+          "type": "SlideShow-f942c020",
+          "blocks": [
+            {
+              "imageSrc": "/assets/images/banner3.jpg",
+              "imageAlt": "",
+              "text": "efefefefefef",
+              "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+              "btnLink": "",
+              "btnText": "دکمه"
+            },
+            {
+              "imageSrc": "/assets/images/banner1.jpg",
+              "imageAlt": "",
+              "text": "اسلاید 2",
+              "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+              "link": "",
+              "btnText": "دکمه"
+            }
+          ],
+          "setting": {
+            "paddingTop": "20",
+            "paddingBottom": "20",
+            "marginTop": "10",
+            "marginBottom": "10",
+            "descriptionColor": "#E5E5E5",
+            "descriptionFontSize": "16px",
+            "descriptionFontWeight": "normal",
+            "textColor": "#FFFFFF",
+            "textFontSize": "30",
+            "textFontWeight": "bold",
+            "btnTextColor": "#000000",
+            "btnBackgroundColor": "#FCA311",
+            "backgroundColorBox": "#14213D",
+            "backgroundBoxRadius": "40px",
+            "opacityImage": 1,
+            "imageWidth": "700",
+            "imageHeight": "500",
+            "imageRadious": "40px"
+          }
+        },
+        {
+          "type": "CanvasEditor-2b9464b8",
+          "setting": {
+            "paddingTop": "34",
+            "paddingBottom": "20",
+            "paddingLeft": "20",
+            "paddingRight": "20",
+            "marginTop": "30",
+            "marginBottom": "30",
+            "backgroundColor": "#bf0d0d"
+          },
+          "blocks": {
+            "elements": [
+              {
+                "id": "e9f3310a-439d-433c-8e52-fb202d4b2bec",
+                "type": "heading",
+                "content": "Hossein Zolghadr",
+                "style": {
+                  "x": 520,
+                  "y": 8,
+                  "width": 300,
+                  "height": 60,
+                  "fontSize": 34,
+                  "fontWeight": "bold",
+                  "color": "rgba(250, 249, 249, 1)",
+                  "backgroundColor": "rgba(12, 24, 110, 1)",
+                  "borderRadius": 0,
+                  "padding": 4,
+                  "textAlign": "center",
+                  "zIndex": 1
+                }
+              },
+              {
+                "id": "b63bae4c-d512-4158-9a3b-0bcae3ed5b84",
+                "type": "paragraph",
+                "content": "This Is A Test Paragraph",
+                "style": {
+                  "x": 395.0000190734863,
+                  "y": 32.00001525878906,
+                  "width": 527,
+                  "height": 142,
+                  "fontSize": 50,
+                  "fontWeight": "normal",
+                  "color": "#333333",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
+                  "padding": 0,
+                  "textAlign": "center",
+                  "zIndex": 1
+                }
+              },
+              {
+                "id": "345662f9-3f11-42db-b55a-70b85d45ca15",
+                "type": "button",
+                "content": "Button",
+                "style": {
+                  "x": 615,
+                  "y": 128,
+                  "width": 120,
+                  "height": 100,
+                  "fontSize": 51,
+                  "fontWeight": "bold",
+                  "color": "#000000",
+                  "backgroundColor": "rgba(239, 11, 11, 1)",
+                  "borderRadius": 35,
+                  "padding": 49,
+                  "textAlign": "center",
+                  "zIndex": 1
+                },
+                "href": "/hjjyj",
+                "animation": {
+                  "type": "hover",
+                  "animation": {
+                    "type": "",
+                    "duration": "1s",
+                    "timing": "ease-in-out",
+                    "delay": "0s",
+                    "iterationCount": "infinite",
+                    "intensity": "normal"
+                  }
+                }
+              },
+              {
+                "id": "e26beed4-95ca-4b78-9b09-f81e6367f8e8",
+                "type": "div",
+                "content": "",
+                "style": {
+                  "x": 520,
+                  "y": 237,
+                  "width": 300,
+                  "height": 200,
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "color": "#000000",
+                  "backgroundColor": "rgba(33, 228, 163, 1)",
+                  "borderRadius": 0,
+                  "padding": 0,
+                  "textAlign": "right",
+                  "zIndex": 1
+                },
+                "animation": {
+                  "type": "hover",
+                  "animation": {
+                    "type": "pulse",
+                    "duration": "1s",
+                    "timing": "ease-in-out",
+                    "delay": "0s",
+                    "iterationCount": "1",
+                    "intensity": "normal"
+                  }
+                }
+              },
+              {
+                "id": "c7f133d6-89ca-452b-9c16-fd8a226627f9",
+                "type": "image",
+                "content": "",
+                "style": {
+                  "x": 131.00000381469727,
+                  "y": 461,
+                  "width": 1016,
+                  "height": 224,
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "color": "#000000",
+                  "backgroundColor": "rgba(180, 8, 8, 1)",
+                  "borderRadius": 60,
+                  "padding": 0,
+                  "textAlign": "center",
+                  "zIndex": 1
+                },
+                "src": "data:image/jpeg;base64,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",
+                "alt": "Canvas image",
+                "animation": {
+                  "type": "hover",
+                  "animation": {
+                    "type": "blur",
+                    "duration": "1s",
+                    "timing": "ease-in-out",
+                    "delay": "0s",
+                    "iterationCount": "infinite",
+                    "intensity": "normal"
+                  }
+                }
+              }
+            ],
+            "setting": {
+              "canvasWidth": "100%",
+              "canvasHeight": "1000px",
+              "backgroundColor": "#0773df",
+              "gridSize": 10,
+              "showGrid": true
+            }
+          }
+        }
+      ],
+      "order": [
+        "Banner-dea4624e",
+        "OfferRow",
+        "ProductsRow-2",
+        "Gallery",
+        "ImageText-8d6d4e85",
+        "RichText-51d219c2",
+        "MultiRow-1e268611",
+        "CollapseFaq-ae258c70",
+        "Gallery-0cf7ee41",
+        "ContactForm-aaf2234d",
+        "SlideShow-f942c020",
+        "CanvasEditor-2b9464b8"
+      ]
+    },
+    "sectionFooter": {
+      "type": "Footer",
+      "blocks": {
+        "setting": {
+          "textColor": "#000000",
+          "textFontSize": "25",
+          "textFontWeight": "bold",
+          "descriptionColor": "#000000",
+          "descriptionFontSize": "18",
+          "descriptionFontWeight": "normal",
+          "trustIconBackground": "#eb0fee",
+          "trustIconColor": "#ffffff",
+          "trustItemSize": "15",
+          "trustItemColor": "bold",
+          "scrollButtonBg": "#eb0fee",
+          "scrollButtonColor": "#fffafa",
+          "categoryColor": "#000000",
+          "linkColor": "#0077b6",
+          "logoWidth": "80",
+          "logoHeight": "80",
+          "logoRadius": "10",
+          "categoryBg": "#e7dfdf"
+        },
+        "text": "سربرگ قسمت پایین سایت",
+        "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+        "instagramLink": "#",
+        "telegramLink": "#",
+        "whatsappLink": "#",
+        "textNumber": "با این شماره تماس بگیرید",
+        "phoneNumber": "09123456789",
+        "logo": "/assets/images/logo.webp",
+        "links": []
+      },
+      "setting": {
+        "paddingTop": "30",
+        "paddingBottom": "30",
+        "marginTop": "20",
+        "marginBottom": "20",
+        "paddinRight": "0",
+        "paddinLeft": "0",
+        "backgroundColor": "#ffffff"
+      }
+    }
+  },
+  "order": ["section-header", "children", "section-footer"]
+}
