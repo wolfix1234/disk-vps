@@ -7,8 +7,8 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import uuid
 import logging
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+# from flask_limiter import Limiter
+# from flask_limiter.util import get_remote_address
 from dotenv import load_dotenv
 import re
 from pathlib import Path
