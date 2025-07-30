@@ -1,32 +1,34 @@
 function create folder on signup:
 
-curl -X GET http://<your-domain-or-ip>/init-store \
-  -H "storeId: your-store-id" \
-  -H "Authorization: Bearer your-auth-token"
+curl -X GET "http://62.3.42.11:5002/init-store" \
+-H "Authorization: Bearer mamad" \
+  -H "storeId: asdfasdfasf"
 
 
 
 post for upload image:
 // add the domain of the vps on the response too
 
-curl -X POST "http://localhost:5000/upload/image" \
-  -H "Authorization: Bearer your-secret-token" \
-  -F "storeId=store123" \
-  -F "file=@aks.jpg"
+curl -X POST http://62.3.42.11:5002/upload/image \
+  -H "Authorization: Bearer mamad" \
+  -F "storeId=storemdolh698v7th9n" \
+  -F "file=@girl.jpg"
 
 
 DELETE image:
 
-curl -X DELETE "http://localhost:5000/delete/image" \
-  -H "Authorization: Bearer your-secret-token" \
+curl -X DELETE "http://62.3.42.11:5002/delete/image" \
+  -H "Authorization: Bearer mamad" \
   -H "Content-Type: application/json" \
-  -d '{"storeId": "store123", "filename": "product.jpg"}'
+  -d '{"storeId": "storemdolh698v7th9n", "filename": "girl.png"}'
 
 
 GET list images:
 
-curl -X GET "http://91.216.104.8:5000/images/test2" \
- -H "Authorization: Bearer your-secret-token"
+curl -X GET http://62.3.42.11:5002/images \
+  -H "Authorization: Bearer mamad" \
+  -H "storeId: storemdolh698v7th9n"
+
 
 
 
@@ -38,24 +40,25 @@ curl -X GET "http://91.216.104.8:5000/images/test2" \
 
 POST update json file:
 
-curl -X POST "http://91.216.104.8:5000/json" \
-  -H "Authorization: Bearer your-secret-token" \
+curl -X POST http://62.3.42.11:5002/json \
+  -H "storeId: asdfasdfasf" \
+  -H "filename: aboutlg.json" \
+  -H "Authorization: Bearer mamad" \
   -H "Content-Type: application/json" \
-  -H "storeId: ghasem" \
-  -H "filename: aboutlg.json" /
-  -d '{"key": "value"}'
+  -d '{"key": "value", "example": true}'
 
 
 Get the content of the json:
 
-curl -X GET "http://91.216.104.8:5000/json" \
-  -H "Authorization: Bearer your-secret-token" \
-  -H "storeId: ghasem" \
-  -H "filename: aboutlg.json"
+curl -X GET http://62.3.42.11:5002/json \
+  -H "storeId: asdfasdfasf" \
+  -H "filename: aboutlg.json" \
+  -H "Authorization: Bearer mamad"
 
 
 
 GET list json files:
 
-curl -X GET "http://62.3.42.11:5002/json/storemdbrstve5d4941" \
-  -H "Authorization: Bearer your-secret-token"
+curl -X GET http://62.3.42.11:5002/list-json \
+  -H "storeId: asdfasdfasf" \
+  -H "Authorization: Bearer mamad"
