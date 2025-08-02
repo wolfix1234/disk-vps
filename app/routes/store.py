@@ -1,44 +1,43 @@
 import os
 import shutil
-from flask import Blueprint, request, jsonify, current_app
+from fastapi import APIRouter, Depends, Header, HTTPException
 from ..utils.auth import authorized
 from ..utils.path import safe_path
+from ..config import Config
 
-bp = Blueprint('store', __name__)
+router = APIRouter()
+config = Config()
 
-@bp.route("/init-store", methods=["GET"])
-def init_store():
+@router.get("/init-store")
+def init_store(
+    store_id: str = Header(..., alias='storeId'),
+    _: None = Depends(authorized(config.SECRET_TOKEN))
+):
     """Initialize a store by copying JSON templates into its directory."""
-    if error := authorized(request, current_app.config['SECRET_TOKEN']):
-        return error
-
-    store_id = request.headers.get("storeId")
     if not store_id:
-        return jsonify({"error": "Missing storeId in header"}), 400
+        raise HTTPException(status_code=400, detail="Missing storeId in header")
 
-    store_path, error = safe_path(current_app.config['UPLOAD_FOLDER'], store_id)
-    if error:
-        return error
+    store_path = safe_path(config.UPLOAD_FOLDER, store_id)
 
     store_json_path = os.path.join(store_path, "json")
     if os.path.exists(store_json_path):
-        return jsonify({"message": "Store already exists"}), 200
+        return {"message": "Store already exists"}
 
     try:
         os.makedirs(store_json_path, exist_ok=True)
 
-        template_folder = current_app.config['TEMPLATE_FOLDER']
+        template_folder = config.TEMPLATE_FOLDER
         for filename in os.listdir(template_folder):
             if filename.endswith(".json"):
                 src = os.path.join(template_folder, filename)
                 dst = os.path.join(store_json_path, filename)
                 shutil.copyfile(src, dst)
 
-        vps_url = current_app.config['VPS_URL']
-        return jsonify({
+        vps_url = config.VPS_URL
+        return {
             "message": "Store initialized with templates",
             "url": f"{vps_url}/{store_id}"
-        }), 200
+        }
 
     except Exception as e:
-        return jsonify({"error": f"Failed to initialize store: {str(e)}"}), 500
+        raise HTTPException(status_code=500, detail=f"Failed to initialize store: {str(e)}")

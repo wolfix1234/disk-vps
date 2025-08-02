@@ -1,0 +1,516 @@
+{
+  "type": "layout",
+  "settings": {
+    "fontFamily": "Arial, sans-serif",
+    "colorSchema": {
+      "primary": "#3498db",
+      "secondary": "#2ecc71",
+      "text": "#333333"
+    }
+  },
+  "sections": {
+    "sectionHeader": {
+      "blocks": {
+        "imageLogo": "/assets/images/logo.webp",
+        "imageAlt": "دیجی‌کالا",
+        "links": [
+          {
+            "name": "دسته‌بندی کالاها",
+            "url": "/categories",
+            "megaMenu": [
+              {
+                "title": "کالای دیجیتال",
+                "items": [
+                  {
+                    "name": "گوشی موبایل",
+                    "url": "/mobile"
+                  },
+                  {
+                    "name": "لپ تاپ",
+                    "url": "/laptop"
+                  },
+                  {
+                    "name": "تبلت",
+                    "url": "/tablet"
+                  }
+                ]
+              },
+              {
+                "title": "لوازم خانگی",
+                "items": [
+                  {
+                    "name": "یخچال",
+                    "url": "/refrigerator",
+                    "image": "/assets/images/fridge.jpg"
+                  },
+                  {
+                    "name": "ماشین لباسشویی",
+                    "url": "/washing-machine",
+                    "image": "/assets/images/washer.jpg"
+                  }
+                ]
+              },
+              {
+                "title": "لوازم خانگی",
+                "items": [
+                  {
+                    "name": "یخچال",
+                    "url": "/refrigerator",
+                    "image": "/assets/images/fridge.jpg"
+                  },
+                  {
+                    "name": "ماشین لباسشویی",
+                    "url": "/washing-machine",
+                    "image": "/assets/images/washer.jpg"
+                  }
+                ]
+              },
+              {
+                "title": "لوازم خانگی",
+                "items": [
+                  {
+                    "name": "یخچال",
+                    "url": "/refrigerator",
+                    "image": "/assets/images/fridge.jpg"
+                  },
+                  {
+                    "name": "ماشین لباسشویی",
+                    "url": "/washing-machine",
+                    "image": "/assets/images/washer.jpg"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "درباره ما",
+            "url": "/about"
+          },
+          {
+            "name": "وبلاگ",
+            "url": "/blog"
+          },
+          {
+            "name": "تماس با ما",
+            "url": "/contact"
+          },
+          {
+            "name": "تخفیف‌ها",
+            "url": "/discounts"
+          },
+          {
+            "name": "سوالات متداول",
+            "url": "/faq"
+          },
+          {
+            "name": "تبلیغات",
+            "url": "/ads"
+          }
+        ],
+        "setting": {
+          "imageWidth": "60",
+          "imageHeight": "60",
+          "imageRadius": "30",
+          "itemColor": "#6c757d",
+          "itemFontSize": "14",
+          "itemFontWeight": "normal",
+          "itemHoverColor": "#e4e4e4",
+          "backgroundColorNavbar": "#FCA311",
+          "searchBarBorderColor": "#E5E7EB",
+          "searchBarBorderRadius": "9999",
+          "buttonBorderColor": "#E5E7EB",
+          "buttonBorderRadius": "8",
+          "locationButtonBgColor": "#FFF7ED",
+          "locationButtonTextColor": "#EA580C",
+          "announcementText": "ارسال رایگان برای خرید‌ بالای ۵۰۰ هزار تومان!",
+          "announcementBgColor": "#e51542",
+          "announcementTextColor": "#ffffff",
+          "announcementFontSize": "14",
+          "bgColor": "#ffffff",
+          "gap": "10",
+          "megaMenuBg": "#ffffff",
+          "categoryItemColor": "ffffff",
+          "categoryItemSize": "14",
+          "categoryItemHoverColor": "#000000"
+        }
+      },
+      "setting": {
+        "paddingTop": "0",
+        "paddingBottom": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0",
+        "marginTop": "",
+        "marginBottom": "0",
+        "navbarPosition": "fixed",
+        "bgColor": "#ffffff"
+      },
+      "type": "header"
+    },
+    "children": {
+      "sections": [
+        {
+          "type": "SlideBanner",
+          "setting": {
+            "marginTop": "20",
+            "marginBottom": "0",
+            "paddingTop": "0",
+            "paddingBottom": "0",
+            "paddingLeft": "0",
+            "paddingRight": "0"
+          },
+          "blocks": {
+            "slides": [
+              {
+                "imageSrc": "/assets/images/bannerdigi.webp",
+                "imageAlt": "Slide 1",
+                "heading": "عنوان اسلاید اول",
+                "description": "توضیحات اسلاید اول",
+                "link": "#"
+              },
+              {
+                "imageSrc": "/assets/images/bannerdigi1.webp",
+                "imageAlt": "Slide 2",
+                "heading": "عنوان اسلاید دوم",
+                "description": "توضیحات اسلاید دوم",
+                "link": "#"
+              },
+              {
+                "imageSrc": "/assets/images/bannerdigi2.webp",
+                "imageAlt": "Slide 3",
+                "heading": "عنوان اسلاید سوم",
+                "description": "توضیحات اسلاید سوم",
+                "link": "#"
+              }
+            ],
+            "setting": {
+              "autoplay": true,
+              "autoplaySpeed": 3000,
+              "slideTransition": "fade",
+              "navigationStyle": "arrows",
+              "arrowsPosition": "bottom-right",
+              "height": "500",
+              "bgArrow": "#ffffff",
+              "activeDotColor": "#ffffff",
+              "inactiveDotColor": "#000000"
+            }
+          }
+        },
+        {
+          "type": "SpecialOffer",
+          "blocks": {
+            "textHeading": "پیشنهاد شگفت‌ انگیز",
+            "setting": {
+              "headingColor": "#FFFFFF",
+              "headingFontSize": "32",
+              "headingFontWeight": "bold",
+              "productNameColor": "#000000",
+              "priceColor": "#EF394E",
+              "descriptionColor": "#666666",
+              "btnBg": "#EF394E",
+              "btnTextColor": "#ffffff",
+              "cardBackground": "#EF394E",
+              "cardBorderRadius": "8",
+              "imageRadius": "8",
+              "gridColumns": "4",
+              "selectedCollection": "67b341e8193d4de634d00fec"
+            }
+          },
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "backgroundColor": "#EF394E",
+            "paddingLeft": "10",
+            "paddingRight": "10"
+          }
+        },
+        {
+          "type": "Story",
+          "blocks": {
+            "stories": [
+              {
+                "id": "1",
+                "imageUrl": "/assets/images/pro1.jpg",
+                "title": "تخفیف ویژه",
+                "link": "/special-offers"
+              },
+              {
+                "id": "2",
+                "imageUrl": "/assets/images/pro2.jpg",
+                "title": "جدیدترین‌ها",
+                "link": "/new-arrivals"
+              },
+              {
+                "id": "3",
+                "imageUrl": "/assets/images/pro3.jpg",
+                "title": "پیشنهاد روز",
+                "link": "/daily-deals"
+              },
+              {
+                "id": "4",
+                "imageUrl": "/assets/images/pro4.jpg",
+                "title": "پیشنهاد روز",
+                "link": "/daily-deals"
+              }
+            ],
+            "setting": {
+              "storyRingColor": "#fd0de9",
+              "viewedRingColor": "#e0e0e0",
+              "titleColor": "#666666",
+              "titleFontSize": "12",
+              "titleFontWeight": "normal",
+              "imageWidth": "70px",
+              "imageHeight": "70px",
+              "imageRadius": "500"
+            }
+          },
+          "setting": {
+            "paddingTop": "0",
+            "paddingBottom": "0",
+            "marginTop": "0",
+            "marginBottom": "0",
+            "backgroundColor": "#ffffff"
+          }
+        },
+        {
+          "type": "OfferRow",
+          "blocks": {
+            "offers": [],
+            "setting": {
+              "titleColor": "#0c2c18",
+              "titleText": "شگفت‌انگیز سوپرمارکتی",
+              "buttonColor": "#d91717",
+              "buttonTextColor": "#000000",
+              "gradientFromColor": "#f3f4f6",
+              "gradientToColor": "#e5e7eb",
+              "buttonText": "مشاهده همه",
+              "buttonLink": "/special-offers",
+              "selectedCollection": "67b341e8193d4de634d00fec"
+            }
+          },
+          "setting": {
+            "paddingTop": "20",
+            "paddingBottom": "20",
+            "marginTop": "10",
+            "marginBottom": "10",
+            "backgroundColor": "#ffffff",
+            "buttonText": "مشاهده همه"
+          }
+        },
+        {
+          "type": "Brands",
+          "blocks": {
+            "heading": "محبوب‌ترین برندها",
+            "brands": [
+              {
+                "id": 1,
+                "name": "سامسونگ",
+                "logo": "/assets/images/samsung.jpg"
+              },
+              {
+                "id": 2,
+                "name": "اپل",
+                "logo": "/assets/images/icons8-apple-logo.svg"
+              },
+              {
+                "id": 3,
+                "name": "هواوی",
+                "logo": "/assets/images/huawei.png"
+              },
+              {
+                "id": 4,
+                "name": "شیائومی",
+                "logo": "/assets/images/mi.png"
+              },
+              {
+                "id": 6,
+                "name": "مای",
+                "logo": "/assets/images/my.png"
+              },
+              {
+                "id": 7,
+                "name": "کینگ استار",
+                "logo": "/assets/images/king.png"
+              }
+            ],
+            "setting": {
+              "headingColor": "#1052e0",
+              "headingFontSize": "70",
+              "headingFontWeight": "bold",
+              "brandNameColor": "#666666",
+              "brandNameFontSize": "16",
+              "brandNameFontWeight": "normal",
+              "cardBackground": "#FFFFFF",
+              "cardBorderRadius": "8",
+              "cardHoverShadow": "lg",
+              "gridColumns": "6",
+              "logoWidth": "96",
+              "logoHeight": "96"
+            }
+          },
+          "setting": {
+            "paddingTop": "5",
+            "paddingBottom": "5",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        {
+          "type": "ProductsRow",
+          "blocks": {
+            "textHeading": " محصولات جدید ",
+            "setting": {
+              "selectedCollection": "67b341e8193d4de634d00fec",
+              "headingColor": "#000000",
+              "headingFontSize": "22",
+              "headingFontWeight": "bold",
+              "productNameColor": "#000000",
+              "priceColor": "#EF394E",
+              "descriptionColor": "#666666",
+              "btnBg": "#EF394E",
+              "btnTextColor": "#ffffff",
+              "cardBorderRadius": "8"
+            }
+          },
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "backgroundColor": "#ffffff",
+            "paddingLeft": "10",
+            "paddingRight": "10"
+          }
+        },
+        {
+          "type": "ProductsRow-2",
+          "blocks": {
+            "textHeading": " محصولات پرفروش ",
+            "setting": {
+              "selectedCollection": "67b341e8193d4de634d00fec",
+              "headingColor": "#000000",
+              "headingFontSize": "22",
+              "headingFontWeight": "bold",
+              "productNameColor": "#000000",
+              "priceColor": "#EF394E",
+              "descriptionColor": "#666666",
+              "btnBg": "#EF394E",
+              "btnTextColor": "#ffffff",
+              "cardBackground": "#EF394E",
+              "cardBorderRadius": "8",
+              "imageRadius": "8",
+              "gridColumns": "4"
+            }
+          },
+          "setting": {
+            "paddingTop": "30",
+            "paddingBottom": "30",
+            "marginTop": "20",
+            "marginBottom": "20",
+            "backgroundColor": "#ffffff",
+            "paddingLeft": "10",
+            "paddingRight": "10"
+          }
+        },
+        {
+          "type": "Gallery-2",
+          "blocks": {
+            "title": " ",
+            "description": " ",
+            "images": [
+              {
+                "imageSrc": "/assets/images/twinbanner2.webp",
+                "imageAlt": "Gallery Image 1",
+                "imageLink": "#"
+              },
+              {
+                "imageSrc": "/assets/images/twinbanner.webp",
+                "imageAlt": "Gallery Image 2",
+                "imageLink": "#"
+              }
+            ],
+            "setting": {
+              "titleColor": "#333333",
+              "titleFontSize": "32",
+              "titleFontWeight": "bold",
+              "descriptionColor": "#666666",
+              "descriptionFontSize": "16",
+              "descriptionFontWeight": "normal",
+              "background": "#ffffff",
+              "imageWidth": "300",
+              "imageHeight": "250",
+              "imageRadius": "8",
+              "gridColumns": "1",
+              "gridGap": "20"
+            }
+          },
+          "setting": {
+            "paddingTop": "10",
+            "paddingBottom": "10",
+            "marginTop": "5",
+            "marginBottom": "5",
+            "paddingRight": "0",
+            "paddingLeft": "0"
+          }
+        }
+      ],
+      "order": [
+        "Story",
+        "SlideBanner",
+        "SpecialOffer",
+        "OfferRow",
+        "ProductsRow-2",
+        "Gallery",
+        "Brands",
+        "Gallery-2",
+        "ProductsRow"
+      ]
+    },
+    "sectionFooter": {
+      "type": "Footer",
+      "blocks": {
+        "setting": {
+          "textColor": "#000000",
+          "textFontSize": "25",
+          "textFontWeight": "bold",
+          "descriptionColor": "#000000",
+          "descriptionFontSize": "18",
+          "descriptionFontWeight": "normal",
+          "trustIconBackground": "#e4e4e4",
+          "trustIconColor": "#ffffff",
+          "trustItemSize": "15",
+          "trustItemColor": "bold",
+          "scrollButtonBg": "#8684f1",
+          "scrollButtonColor": "#fffafa",
+          "categoryColor": "#000000",
+          "linkColor": "#0077b6",
+          "logoWidth": "80",
+          "logoHeight": "80",
+          "logoRadius": "10",
+          "categoryBg": "#ffffff"
+        },
+        "text": "سربرگ قسمت پایین سایت",
+        "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+        "instagramLink": "#",
+        "telegramLink": "#",
+        "whatsappLink": "#",
+        "textNumber": "با این شماره تماس بگیرید",
+        "phoneNumber": "09123456789",
+        "logo": "/assets/images/logo.webp",
+        "links": []
+      },
+      "setting": {
+        "paddingTop": "30",
+        "paddingBottom": "30",
+        "marginTop": "20",
+        "marginBottom": "20",
+        "paddinRight": "0",
+        "paddinLeft": "0",
+        "backgroundColor": "#e30d0d"
+      }
+    }
+  },
+  "order": ["section-header", "children", "section-footer"]
+}

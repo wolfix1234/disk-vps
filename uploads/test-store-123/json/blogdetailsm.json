@@ -1,0 +1,72 @@
+{
+  "children": {
+    "sections": [
+      {
+        "type": "BlogDetail",
+        "blocks": [
+          {
+            "blogId": 1,
+            "coverImage": "/assets/images/blog-cover.jpg",
+            "imageAlt": "تصویر اصلی مقاله",
+            "title": "عنوان مقاله",
+            "subtitle": "زیرعنوان مقاله",
+            "content": "محتوای کامل مقاله که شامل متن و جزئیات است",
+            "author": {
+              "name": "نام نویسنده",
+              "avatar": "/assets/images/author-avatar.jpg",
+              "bio": "توضیحات نویسنده"
+            },
+            "category": "دسته بندی مقاله",
+            "tags": ["برچسب 1", "برچسب 2", "برچسب 3"],
+            "publishDate": "1402/08/15",
+            "readTime": "10 دقیقه",
+            "id": "BLG-001",
+            "relatedPosts": [
+              {
+                "id": "BLG-002",
+                "title": "عنوان مقاله مرتبط",
+                "thumbnail": "/assets/images/related-1.jpg"
+              }
+            ],
+            "socialShare": {
+              "twitter": true,
+              "facebook": true,
+              "linkedin": true,
+              "telegram": true
+            }
+          }
+        ],
+        "setting": {
+          "coverImageWidth": "900",
+          "coverImageHeight": "600",
+          "imageRadius": "10",
+          "titleColor": "#1A1A1A",
+          "titleFontSize": "36",
+          "titleFontWeight": "bold",
+          "subtitleColor": "#4A4A4A",
+          "subtitleFontSize": "24",
+          "contentColor": "#2C2C2C",
+          "contentFontSize": "18",
+          "contentLineHeight": "32",
+          "authorNameColor": "#3498DB",
+          "authorNameFontSize": "20",
+          "categoryColor": "#E67E22",
+          "categoryFontSize": "16",
+          "tagsColor": "#95A5A6",
+          "tagsFontSize": "14",
+          "dateColor": "#7F8C8D",
+          "dateFontSize": "14",
+          "readTimeColor": "#7F8C8D",
+          "readTimeFontSize": "14",
+          "paddingTop": "40",
+          "paddingBottom": "40",
+          "marginTop": "20",
+          "marginBottom": "20",
+          "backgroundColor": "#000",
+          "sectionSpacing": "30"
+        }
+      }
+    ],
+    "order": ["BlogDetail"]
+  }
+}

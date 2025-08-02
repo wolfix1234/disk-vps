@@ -1,0 +1,76 @@
+{
+  "type": "store",
+  "children": {
+     "metaData":{
+      "title":"فروشگاه",
+      "description":"juju page"
+    },
+    "sections": [
+      {
+        "type": "ProductList",
+        "blocks": [
+          {
+            "productId": 1,
+            "imageSrc": "/assets/images/pro1.jpg",
+            "imageAlt": "محصول ۱",
+            "name": "محصول اول",
+            "description": "این محصول به خوبی ساخته شده است.",
+            "price": "1۰۰۰۰۰ تومان",
+            "btnText": "اضافه به سبد خرید",
+            "btnLink": "/product/1"
+          },
+          {
+            "productId": 2,
+            "imageSrc": "/assets/images/pro2.jpg",
+            "imageAlt": "محصول ۲",
+            "name": "محصول دوم",
+            "description": "این محصول به خوبی ساخته شده است.",
+            "price": "2۰۰۰۰۰ تومان",
+            "btnText": "اضافه به سبد خرید",
+            "btnLink": "/product/2"
+          },
+          {
+            "productId": 3,
+            "imageSrc": "/assets/images/pro3.jpg",
+            "imageAlt": "محصول ۳",
+            "name": "محصول سوم",
+            "description": "این محصول به خوبی ساخته شده است.",
+            "price": "3۰۰۰۰۰ تومان",
+            "btnText": "اضافه به سبد خرید",
+            "btnLink": "/product/3"
+          },
+          {
+            "productId": 4,
+            "imageSrc": "/assets/images/pro4.jpg",
+            "imageAlt": "محصول 4",
+            "name": "محصول چهارم",
+            "description": "این محصول به خوبی ساخته شده است.",
+            "price": "4۰۰۰۰۰ تومان",
+            "btnText": "اضافه به سبد خرید",
+            "btnLink": "/product/3"
+          }
+        ],
+        "setting": {
+          "gridColumns": 3,
+          "paddingTop": "90",
+          "paddingBottom": "20",
+          "paddingLeft": "20",
+          "paddingRight": "20",
+          "marginTop": "10",
+          "marginBottom": "10",
+          "marginLeft": "10",
+          "marginRight": "10",
+          "backgroundColor": "#f5f5f5",
+          "cardBackgroundColor": "#ffffff",
+          "cardBorderRadius": "8",
+          "filterButtonBg": "#3498DB",
+          "filterButtonTextColor": "#ffffff",
+          "filterRowBg": "#adb5bd",
+          "filterNameColor": "#333333",
+          "filterCardBg": "#ffffff"
+        }
+      }
+    ],
+    "order": ["ProductList"]
+  }
+}
