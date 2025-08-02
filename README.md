@@ -152,5 +152,3 @@ Invoke-RestMethod -Uri "http://localhost:5002/api/v1/stores/test/json" -Method G
 ```bash
 python run.py
 ```
-
-**That's it! Your API is now working perfectly! 🎉**
