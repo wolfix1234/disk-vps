@@ -6,6 +6,7 @@ Production deployment script for the Store Management API.
 import os
 import sys
 import subprocess
+import platform
 from pathlib import Path
 
 def run_production():
@@ -14,32 +15,47 @@ def run_production():
     # Set production environment
     os.environ["ENVIRONMENT"] = "production"
     
-    # Get the number of workers (CPU cores * 2 + 1)
-    try:
-        import multiprocessing
-        workers = (multiprocessing.cpu_count() * 2) + 1
-    except:
-        workers = 4
+    # Check if running on Windows
+    is_windows = platform.system() == "Windows"
     
-    # Production command with Gunicorn
-    cmd = [
-        "gunicorn",
-        "app.main:app",
-        "--worker-class", "uvicorn.workers.UvicornWorker",
-        "--workers", str(workers),
-        "--bind", "0.0.0.0:5002",
-        "--timeout", "120",
-        "--keep-alive", "5",
-        "--max-requests", "1000",
-        "--max-requests-jitter", "100",
-        "--preload",
-        "--log-level", "info",
-        "--access-logfile", "-",
-        "--error-logfile", "-"
-    ]
-    
-    print(f"🚀 Starting production server with {workers} workers...")
-    print(f"Command: {' '.join(cmd)}")
+    if is_windows:
+        # On Windows, use uvicorn directly (gunicorn doesn't work well on Windows)
+        print("🚀 Starting production server on Windows with uvicorn...")
+        cmd = [
+            sys.executable, "-m", "uvicorn",
+            "app.main:app",
+            "--host", "0.0.0.0",
+            "--port", "5002",
+            "--log-level", "info",
+            "--access-log"
+        ]
+        print(f"Command: {' '.join(cmd)}")
+        
+    else:
+        # On Unix-like systems, use Gunicorn with multiple workers
+        try:
+            import multiprocessing
+            workers = (multiprocessing.cpu_count() * 2) + 1
+        except:
+            workers = 4
+        
+        print(f"🚀 Starting production server with {workers} workers...")
+        cmd = [
+            sys.executable, "-m", "gunicorn",
+            "app.main:app",
+            "--worker-class", "uvicorn.workers.UvicornWorker",
+            "--workers", str(workers),
+            "--bind", "0.0.0.0:5002",
+            "--timeout", "120",
+            "--keep-alive", "5",
+            "--max-requests", "1000",
+            "--max-requests-jitter", "100",
+            "--preload",
+            "--log-level", "info",
+            "--access-logfile", "-",
+            "--error-logfile", "-"
+        ]
+        print(f"Command: {' '.join(cmd)}")
     
     try:
         subprocess.run(cmd, check=True)
@@ -52,22 +68,23 @@ def run_production():
 
 def check_requirements():
     """Check if all production requirements are installed."""
-    required_packages = [
-        "fastapi",
-        "uvicorn",
-        "gunicorn",
-        "python-multipart",
-        "python-dotenv",
-        "pillow"
-    ]
+    # Map PyPI package names to their import names
+    required_packages = {
+        "fastapi": "fastapi",
+        "uvicorn": "uvicorn",
+        "gunicorn": "gunicorn",
+        "python-multipart": "multipart",
+        "python-dotenv": "dotenv",
+        "pillow": "PIL"
+    }
     
     missing_packages = []
     
-    for package in required_packages:
+    for package_name, import_name in required_packages.items():
         try:
-            __import__(package.replace("-", "_"))
+            __import__(import_name)
         except ImportError:
-            missing_packages.append(package)
+            missing_packages.append(package_name)
     
     if missing_packages:
         print(f"❌ Missing required packages: {', '.join(missing_packages)}")

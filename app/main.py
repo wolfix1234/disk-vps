@@ -9,7 +9,8 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .config import Config
 from .api.v1.router import router as api_v1_router
-from .middleware.security import SecurityHeadersMiddleware, RequestLoggingMiddleware, RateLimitMiddleware
+# Middleware imports - uncomment for production
+# from .middleware.security import SecurityHeadersMiddleware, RequestLoggingMiddleware, RateLimitMiddleware
 
 # Configure logging
 logging.basicConfig(
@@ -55,26 +56,35 @@ def create_production_app() -> FastAPI:
         lifespan=lifespan
     )
     
-    # Security middleware
-    app.add_middleware(SecurityHeadersMiddleware)
-    app.add_middleware(RequestLoggingMiddleware)
-    app.add_middleware(RateLimitMiddleware, calls=100, period=60)  # 100 requests per minute
+    # ========================================
+    # MIDDLEWARE & CORS - DISABLED FOR DEVELOPMENT
+    # ========================================
+    # Uncomment these for production deployment
     
-    # Trusted hosts (add your production domains)
-    app.add_middleware(
-        TrustedHostMiddleware,
-        allowed_hosts=["localhost", "127.0.0.1", "62.3.42.11", "*"]  # Configure for production
-    )
+    # Security middleware - Adds security headers (CSP, XSS protection, etc.)
+    # app.add_middleware(SecurityHeadersMiddleware)
     
-    # CORS middleware
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=config.CORS_ORIGINS,
-        allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT", "DELETE"],
-        allow_headers=["*"],
-        expose_headers=["*"]
-    )
+    # Request logging - Logs all incoming requests and response times
+    # app.add_middleware(RequestLoggingMiddleware)
+    
+    # Rate limiting - Limits requests to 100 per minute per IP
+    # app.add_middleware(RateLimitMiddleware, calls=100, period=60)
+    
+    # Trusted hosts - Only allows requests from specified domains
+    # app.add_middleware(
+    #     TrustedHostMiddleware,
+    #     allowed_hosts=["localhost", "127.0.0.1", "62.3.42.11", "*"]
+    # )
+    
+    # CORS middleware - Controls cross-origin requests
+    # app.add_middleware(
+    #     CORSMiddleware,
+    #     allow_origins=config.CORS_ORIGINS,
+    #     allow_credentials=True,
+    #     allow_methods=["GET", "POST", "PUT", "DELETE"],
+    #     allow_headers=["*"],
+    #     expose_headers=["*"]
+    # )
     
     # Include API routes
     app.include_router(api_v1_router)

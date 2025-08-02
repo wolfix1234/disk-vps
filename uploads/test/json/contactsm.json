@@ -1,0 +1,127 @@
+{
+  "children": {
+    "type": "contact",
+     "metaData":{
+      "title":"juju",
+      "description":"juju page"
+    },
+    "sections": [
+      {
+        "type": "ImageText",
+        "blocks": {
+          "imageSrc": "/assets/images/banner3.jpg",
+          "imageAlt": "",
+          "heading": "سربرگ محصول",
+          "description": "توضیحات درباره محصول",
+          "btnLink": "/",
+          "btnText": "دکمه",
+          "setting": {
+            "headingColor": "#ffffff",
+            "headingFontSize": "16",
+            "headingFontWeight": "bold",
+            "descriptionColor": "#000000",
+            "descriptionFontSize": "10",
+            "descriptionFontWeight": "normal",
+            "btnTextColor": "#000000",
+            "btnBackgroundColor": "#ffffff",
+            "backgroundColorBox": "#1d6bdf",
+            "backgroundBoxOpacity": 0.9,
+            "boxRadiuos": "20",
+            "opacityImage": 1,
+            "imageWidth": "85",
+            "imageHeight": "50",
+            "background": "#ffffff"
+          }
+        },
+        "setting": {
+          "paddingTop": "30",
+          "paddingBottom": "30",
+          "marginTop": "20",
+          "marginBottom": "20",
+          "paddinRight": "0",
+          "paddinLeft": "0"
+        }
+      },
+      {
+        "type": "Banner",
+        "blocks": {
+          "imageSrc": "/assets/images/ban.jpg",
+          "imageAlt": "",
+          "text": "سربرگ بنر",
+          "description": " توضیحات بنر",
+          "setting": {
+            "descriptionColor": "#000000",
+            "descriptionFontSize": "15",
+            "descriptionFontWeight": "normal",
+            "textColor": "#1d6bdf",
+            "textFontSize": "30",
+            "textFontWeight": "bold",
+            "backgroundColorBox": "#ffffff",
+            "backgroundBoxRadious": "10",
+            "opacityImage": 1,
+            "opacityTextBox": 0.8,
+            "imageRadious": "14",
+            "imageBehavior": "cover"
+          }
+        },
+        "setting": {
+          "paddingTop": "0",
+          "paddingBottom": "0",
+          "marginTop": "20",
+          "marginBottom": "20"
+        }
+      },
+      {
+        "type": "ContactForm",
+        "blocks": {
+          "heading": "فرم ارتباط با ما",
+          "setting": {
+            "headingColor": "#1d6bdf",
+            "headingFontSize": "35",
+            "headingFontWeight": "bold",
+            "btnBackgroundColor": "#1d6bdf",
+            "btnTextColor": "#ffffff",
+            "formBackground": "#ffffff"
+          }
+        },
+        "setting": {
+          "paddingTop": "30",
+          "paddingBottom": "30",
+          "marginTop": "20",
+          "marginBottom": "20",
+          "paddinRight": "0",
+          "paddinLeft": "0"
+        }
+      },
+      {
+        "type": "NewsLetter",
+        "blocks": {
+          "heading": "عضویت در خبرنامه",
+          "description": "توضیحات درباره خبرنامه",
+          "btnText": "ثبت نام",
+
+          "setting": {
+            "headingColor": "#ffffff",
+            "headingFontSize": "27",
+            "headingFontWeight": "bold",
+            "descriptionColor": "#e4e4e4",
+            "descriptionFontSize": "18",
+            "descriptionFontWeight": "normal",
+            "btnBackgroundColor": "#ffffff",
+            "btnTextColor": "#000000",
+            "formBackground": "#1d6bdf"
+          }
+        },
+        "setting": {
+          "paddingTop": "30",
+          "paddingBottom": "30",
+          "marginTop": "20",
+          "marginBottom": "20",
+          "paddinRight": "0",
+          "paddinLeft": "0"
+        }
+      }
+    ],
+    "order": ["ImageText", "ContactForm", "NewsLetter", "Banner"]
+  }
+}

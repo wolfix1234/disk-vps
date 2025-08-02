@@ -1,0 +1,49 @@
+{
+  "children": {
+     "metaData":{
+      "title":"juju",
+      "description":"juju page"
+    },
+    "sections": [
+      {
+        "type": "BlogList",
+        "blocks": [
+          {
+            "blogId": 1,
+            "imageSrc": "/assets/images/blog1.jpg",
+            "imageAlt": "بلاگ ۱",
+            "title": "عنوان اولین بلاگ",
+            "description": "این بلاگ درباره موضوعات جالب و خواندنی است.",
+            "author": "نویسنده ۱",
+            "date": "2024-12-01",
+            "btnText": "مطالعه بیشتر"
+          },
+          {
+            "blogId": 2,
+            "imageSrc": "/assets/images/blog2.jpg",
+            "imageAlt": "بلاگ ۲",
+            "title": "عنوان دومین بلاگ",
+            "description": "موضوعات هیجان‌انگیز در این بلاگ بررسی شده‌اند.",
+            "author": "نویسنده ۲",
+            "date": "2024-12-02",
+            "btnText": "مطالعه بیشتر"
+          }
+        ],
+        "setting": {
+          "gridColumns": 2,
+          "paddingTop": 70,
+          "paddingBottom": "30",
+          "marginTop": "50",
+          "marginBottom": "15",
+          "backgroundColor": "#f8f9fa",
+          "cardBackgroundColor": "#ffffff",
+          "textColor": "#000000",
+          "cardBorderRadius": 10,
+          "btnBackgroundColor": "#e4e4e4",
+          "buttonColor": "#ffffff"
+        }
+      }
+    ],
+    "order": ["BlogList"]
+  }
+}
