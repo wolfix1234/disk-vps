@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-api
+  labels:
+    app: store-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: store-api
+  template:
+    metadata:
+      labels:
+        app: store-api
+    spec:
+      containers:
+      - name: store-api
+        image: your-registry/store-api:latest  # Replace with your image
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: store-api-secrets
+              key: api-token
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: uploads-storage
+          mountPath: /app/uploads
+        - name: logs-storage
+          mountPath: /app/logs
+      volumes:
+      - name: uploads-storage
+        persistentVolumeClaim:
+          claimName: store-api-uploads-pvc
+      - name: logs-storage
+        persistentVolumeClaim:
+          claimName: store-api-logs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-api-service
+spec:
+  selector:
+    app: store-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: store-api-secrets
+type: Opaque
+data:
+  # Replace with your base64 encoded API token
+  api-token: eW91ci1hcGktdG9rZW4taGVyZQ==  # "your-api-token-here" in base64
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: store-api-uploads-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: store-api-logs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

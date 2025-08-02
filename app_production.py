@@ -1,3 +1,7 @@
+"""
+Production-ready FastAPI application with all security middleware enabled.
+This file is optimized for container deployment.
+"""
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, status
@@ -7,27 +11,29 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from .config import Config
-from .api.v1.router import router as api_v1_router
-# Middleware imports - uncomment for production
-# from .middleware.security import SecurityHeadersMiddleware, RequestLoggingMiddleware, RateLimitMiddleware
+from app.config import Config
+from app.api.v1.router import router as api_v1_router
+from app.middleware.security import SecurityHeadersMiddleware, RequestLoggingMiddleware, RateLimitMiddleware
 
-# Configure logging
+# Configure logging for production
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),  # For container logs
+    ]
 )
 logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan events."""
-    logger.info("🚀 Starting Store API...")
+    logger.info("🚀 Starting Store API in PRODUCTION mode...")
     yield
     logger.info("🛑 Shutting down Store API...")
 
-def create_production_app() -> FastAPI:
-    """Create a production-ready FastAPI application."""
+def create_app() -> FastAPI:
+    """Create a production-ready FastAPI application with all security features enabled."""
     
     config = Config()
     
@@ -66,34 +72,33 @@ def create_production_app() -> FastAPI:
 
     
     # ========================================
-    # MIDDLEWARE & CORS - DISABLED FOR DEVELOPMENT
+    # PRODUCTION MIDDLEWARE - ALL ENABLED
     # ========================================
-    # Uncomment these for production deployment
     
     # Security middleware - Adds security headers (CSP, XSS protection, etc.)
-    # app.add_middleware(SecurityHeadersMiddleware)
+    app.add_middleware(SecurityHeadersMiddleware)
     
     # Request logging - Logs all incoming requests and response times
-    # app.add_middleware(RequestLoggingMiddleware)
+    app.add_middleware(RequestLoggingMiddleware)
     
     # Rate limiting - Limits requests to 100 per minute per IP
-    # app.add_middleware(RateLimitMiddleware, calls=100, period=60)
+    app.add_middleware(RateLimitMiddleware, calls=100, period=60)
     
-    # Trusted hosts - Only allows requests from specified domains
-    # app.add_middleware(
-    #     TrustedHostMiddleware,
-    #     allowed_hosts=["localhost", "127.0.0.1", "62.3.42.11", "*"]
-    # )
+    # Trusted hosts - Configure based on your deployment
+    app.add_middleware(
+        TrustedHostMiddleware,
+        allowed_hosts=["*"]  # Configure this for your specific domains in production
+    )
     
     # CORS middleware - Controls cross-origin requests
-    # app.add_middleware(
-    #     CORSMiddleware,
-    #     allow_origins=config.CORS_ORIGINS,
-    #     allow_credentials=True,
-    #     allow_methods=["GET", "POST", "PUT", "DELETE"],
-    #     allow_headers=["*"],
-    #     expose_headers=["*"]
-    # )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=config.CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_headers=["*"],
+        expose_headers=["*"]
+    )
     
     # Include API routes
     app.include_router(api_v1_router)
@@ -144,7 +149,7 @@ def create_production_app() -> FastAPI:
         return {
             "status": "healthy",
             "version": "1.0.0",
-            "timestamp": "2024-01-01T00:00:00Z"
+            "environment": "production"
         }
     
     # Root endpoint
@@ -154,6 +159,7 @@ def create_production_app() -> FastAPI:
         return {
             "message": "Store Management API",
             "version": "1.0.0",
+            "environment": "production",
             "docs": "/docs",
             "redoc": "/redoc",
             "health": "/health"
@@ -162,4 +168,4 @@ def create_production_app() -> FastAPI:
     return app
 
 # Create the app instance
-app = create_production_app()
+app = create_app()
