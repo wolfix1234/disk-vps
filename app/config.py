@@ -9,3 +9,4 @@ class Config:
     TEMPLATE_FOLDER = os.getenv("TEMPLATE_FOLDER")
     SECRET_TOKEN = os.getenv("SECRET_TOKEN")
     VPS_URL = os.getenv("VPS_URL")
+    CORS_ORIGINS = ["http://localhost:3000"]

@@ -2,198 +2,232 @@ import os
 import re
 import json
 import logging
-from flask import Blueprint, request, jsonify, current_app
+from fastapi import APIRouter, Depends, Header, HTTPException
+from pydantic import BaseModel
+from typing import Any, Dict
 from ..utils.auth import authorized
 from ..utils.path import safe_path
+from ..config import Config
 
-bp = Blueprint('json', __name__)
+router = APIRouter()
 logger = logging.getLogger(__name__)
+config = Config()
 
 
-# GET or POST JSON file content
-@bp.route("/json", methods=["GET", "POST"])
-def handle_json():
-    if error := authorized(request, current_app.config["SECRET_TOKEN"]):
-        return error
-
-    store_id = request.headers.get("storeId")
-    filename = request.headers.get("filename")
-
+# GET JSON file content
+@router.get("/json")
+def get_json(
+    store_id: str = Header(..., alias='storeId'),
+    filename: str = Header(...),
+    _: None = Depends(authorized(config.SECRET_TOKEN))
+):
     logger.info(f"Raw store_id: {repr(store_id)}")
     logger.info(f"Raw filename: {repr(filename)}")
 
     if not store_id or not filename:
-        return jsonify({"error": "Missing storeId or filename"}), 400
+        raise HTTPException(status_code=400, detail="Missing storeId or filename")
 
     store_id = re.sub(r'[^a-zA-Z0-9._-]', '', store_id.strip())
     filename = re.sub(r'[^a-zA-Z0-9._-]', '', filename.strip())
 
     if not store_id or not filename:
-        return jsonify({"error": "Invalid storeId or filename after sanitization"}), 400
+        raise HTTPException(status_code=400, detail="Invalid storeId or filename after sanitization")
 
     try:
-        store_path, error = safe_path(current_app.config["UPLOAD_FOLDER"], store_id)
-        if error:
-            return error
+        store_path = safe_path(config.UPLOAD_FOLDER, store_id)
         full_path = os.path.join(store_path, "json", filename)
     except Exception:
-        return jsonify({"error": "Invalid path construction"}), 400
+        raise HTTPException(status_code=400, detail="Invalid path construction")
 
-    if request.method == "GET":
-        if not os.path.isfile(full_path):
-            return jsonify({"error": "File not found"}), 404
-        try:
-            with open(full_path, "r", encoding="utf-8") as f:
-                content = f.read().strip()
-                if not content:
-                    return jsonify({"error": "File is empty"}), 400
-                f.seek(0)
-                data = json.load(f)
-            return jsonify(data), 200
-        except json.JSONDecodeError:
-            return jsonify({"error": "Invalid JSON format"}), 400
-        except Exception as e:
-            logger.error(f"Error reading file: {str(e)}")
-            return jsonify({"error": "Error reading file"}), 500
+    if not os.path.isfile(full_path):
+        raise HTTPException(status_code=404, detail="File not found")
+    try:
+        with open(full_path, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+            if not content:
+                raise HTTPException(status_code=400, detail="File is empty")
+            f.seek(0)
+            data = json.load(f)
+        return data
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid JSON format")
+    except Exception as e:
+        logger.error(f"Error reading file: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error reading file")
 
-    elif request.method == "POST":
-        if not os.path.isfile(full_path):
-            return jsonify({"error": "File not found"}), 404
-        if not request.is_json:
-            return jsonify({"error": "No JSON data provided"}), 400
+# POST JSON file content
+@router.post("/json")
+def update_json(
+    request: Dict[str, Any],
+    store_id: str = Header(..., alias='storeId'),
+    filename: str = Header(...),
+    _: None = Depends(authorized(config.SECRET_TOKEN))
+):
+    logger.info(f"Raw store_id: {repr(store_id)}")
+    logger.info(f"Raw filename: {repr(filename)}")
 
-        new_data = request.get_json()
-        try:
-            json.dumps(new_data)  # Ensure serializable
-            os.makedirs(os.path.dirname(full_path), exist_ok=True)
-            temp_path = f"{full_path}.tmp"
-            with open(temp_path, "w", encoding="utf-8") as f:
-                json.dump(new_data, f, indent=2)
-            os.replace(temp_path, full_path)
-            return jsonify({"message": "File updated successfully"}), 200
-        except Exception as e:
-            if os.path.exists(temp_path):
-                os.remove(temp_path)
-            logger.error(f"Error updating file: {str(e)}")
-            return jsonify({"error": "Error updating file"}), 500
+    if not store_id or not filename:
+        raise HTTPException(status_code=400, detail="Missing storeId or filename")
+
+    store_id = re.sub(r'[^a-zA-Z0-9._-]', '', store_id.strip())
+    filename = re.sub(r'[^a-zA-Z0-9._-]', '', filename.strip())
+
+    if not store_id or not filename:
+        raise HTTPException(status_code=400, detail="Invalid storeId or filename after sanitization")
+
+    try:
+        store_path = safe_path(config.UPLOAD_FOLDER, store_id)
+        full_path = os.path.join(store_path, "json", filename)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid path construction")
+
+    if not os.path.isfile(full_path):
+        raise HTTPException(status_code=404, detail="File not found")
+
+    new_data = request
+    try:
+        json.dumps(new_data)  # Ensure serializable
+        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+        temp_path = f"{full_path}.tmp"
+        with open(temp_path, "w", encoding="utf-8") as f:
+            json.dump(new_data, f, indent=2)
+        os.replace(temp_path, full_path)
+        return {"message": "File updated successfully"}
+    except Exception as e:
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
+        logger.error(f"Error updating file: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error updating file")
 
 
 # List all JSON files in a store
-@bp.route("/list-json", methods=["GET"])
-def list_json():
-    if error := authorized(request, current_app.config["SECRET_TOKEN"]):
-        return error
-
-    store_id = request.headers.get("storeId")
+@router.get("/list-json")
+def list_json(
+    store_id: str = Header(..., alias='storeId'),
+    _: None = Depends(authorized(config.SECRET_TOKEN))
+):
     if not store_id:
-        return jsonify({"error": "Missing storeId header"}), 400
+        raise HTTPException(status_code=400, detail="Missing storeId header")
 
     try:
-        store_path, error = safe_path(current_app.config["UPLOAD_FOLDER"], store_id)
-        if error:
-            return error
+        store_path = safe_path(config.UPLOAD_FOLDER, store_id)
         json_path = os.path.join(store_path, "json")
     except Exception:
-        return jsonify({"error": "Invalid path construction"}), 400
+        raise HTTPException(status_code=400, detail="Invalid path construction")
 
     if not os.path.exists(json_path):
-        return jsonify({"error": "Store ID does not exist"}), 404
+        raise HTTPException(status_code=404, detail="Store ID does not exist")
 
     try:
         json_files = [f for f in os.listdir(json_path) if f.endswith('.json')]
-        return jsonify({"json_files": json_files}), 200
+        return {"json_files": json_files}
     except Exception as e:
-        return jsonify({"error": f"Error reading JSON files: {str(e)}"}), 500
+        raise HTTPException(status_code=500, detail=f"Error reading JSON files: {str(e)}")
 
 
-# Create or delete dynamic JSON files
-@bp.route("/create-json", methods=["POST", "DELETE"])
-def dynamic_json():
-    if error := authorized(request, current_app.config["SECRET_TOKEN"]):
-        return error
-
-    store_id = request.headers.get("storeId")
-    dynamic = request.headers.get("filename")
-
+# Create dynamic JSON files
+@router.post("/create-json")
+def create_json(
+    store_id: str = Header(..., alias='storeId'),
+    dynamic: str = Header(..., alias='filename'),
+    _: None = Depends(authorized(config.SECRET_TOKEN))
+):
     logger.info(f"Raw store_id: {repr(store_id)}")
     logger.info(f"Raw dynamic: {repr(dynamic)}")
 
     if not store_id or not dynamic:
-        return jsonify({"error": "Missing storeId or filename"}), 400
+        raise HTTPException(status_code=400, detail="Missing storeId or filename")
 
     store_id = re.sub(r'[^a-zA-Z0-9._-]', '', store_id.strip())
     dynamic = re.sub(r'[^a-zA-Z0-9._-]', '', dynamic.strip())
 
     try:
-        store_path, error = safe_path(current_app.config["UPLOAD_FOLDER"], store_id)
-        if error:
-            return error
+        store_path = safe_path(config.UPLOAD_FOLDER, store_id)
         lg_path = os.path.join(store_path, "json", f"{dynamic}lg.json")
         sm_path = os.path.join(store_path, "json", f"{dynamic}sm.json")
     except Exception:
-        return jsonify({"error": "Invalid path construction"}), 400
+        raise HTTPException(status_code=400, detail="Invalid path construction")
 
-    # ========== POST ==========
-    if request.method == "POST":
-        if os.path.isfile(lg_path) or os.path.isfile(sm_path):
-            return jsonify({"error": "File already exists"}), 409
+    if os.path.isfile(lg_path) or os.path.isfile(sm_path):
+        raise HTTPException(status_code=409, detail="File already exists")
 
-        default_content = {
-            "children": {
-                "type": f"{dynamic}",
-                "metaData": {
-                    "title": f"{dynamic}",
-                    "description": f"{dynamic} page"
-                },
-                "sections": [],
-                "order": []
-            }
+    default_content = {
+        "children": {
+            "type": f"{dynamic}",
+            "metaData": {
+                "title": f"{dynamic}",
+                "description": f"{dynamic} page"
+            },
+            "sections": [],
+            "order": []
         }
+    }
 
-        def write_file(path):
+    def write_file(path):
+        try:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            tmp = f"{path}.tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(default_content, f, indent=2)
+            os.replace(tmp, path)
+            return True, None
+        except Exception as e:
+            if os.path.exists(tmp):
+                os.remove(tmp)
+            return False, str(e)
+
+    ok_lg, err_lg = write_file(lg_path)
+    ok_sm, err_sm = write_file(sm_path)
+
+    if ok_lg and ok_sm:
+        return {"message": f"{dynamic}lg.json and {dynamic}sm.json created"}
+    raise HTTPException(status_code=500, detail={
+        "error": "File creation failed",
+        "lg_error": err_lg,
+        "sm_error": err_sm
+    })
+
+# Delete dynamic JSON files
+@router.delete("/create-json")
+def delete_json(
+    store_id: str = Header(..., alias='storeId'),
+    dynamic: str = Header(..., alias='filename'),
+    _: None = Depends(authorized(config.SECRET_TOKEN))
+):
+    logger.info(f"Raw store_id: {repr(store_id)}")
+    logger.info(f"Raw dynamic: {repr(dynamic)}")
+
+    if not store_id or not dynamic:
+        raise HTTPException(status_code=400, detail="Missing storeId or filename")
+
+    store_id = re.sub(r'[^a-zA-Z0-9._-]', '', store_id.strip())
+    dynamic = re.sub(r'[^a-zA-Z0-9._-]', '', dynamic.strip())
+
+    try:
+        store_path = safe_path(config.UPLOAD_FOLDER, store_id)
+        lg_path = os.path.join(store_path, "json", f"{dynamic}lg.json")
+        sm_path = os.path.join(store_path, "json", f"{dynamic}sm.json")
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid path construction")
+
+    deleted = []
+    not_found = []
+
+    for path in [lg_path, sm_path]:
+        if os.path.isfile(path):
             try:
-                os.makedirs(os.path.dirname(path), exist_ok=True)
-                tmp = f"{path}.tmp"
-                with open(tmp, "w", encoding="utf-8") as f:
-                    json.dump(default_content, f, indent=2)
-                os.replace(tmp, path)
-                return True, None
+                os.remove(path)
+                deleted.append(os.path.basename(path))
+                logger.info(f"Deleted: {path}")
             except Exception as e:
-                if os.path.exists(tmp):
-                    os.remove(tmp)
-                return False, str(e)
+                logger.error(f"Delete failed: {str(e)}")
+                raise HTTPException(status_code=500, detail=f"Delete failed: {os.path.basename(path)}")
+        else:
+            not_found.append(os.path.basename(path))
 
-        ok_lg, err_lg = write_file(lg_path)
-        ok_sm, err_sm = write_file(sm_path)
-
-        if ok_lg and ok_sm:
-            return jsonify({"message": f"{dynamic}lg.json and {dynamic}sm.json created"}), 201
-        return jsonify({
-            "error": "File creation failed",
-            "lg_error": err_lg,
-            "sm_error": err_sm
-        }), 500
-
-    # ========== DELETE ==========
-    elif request.method == "DELETE":
-        deleted = []
-        not_found = []
-
-        for path in [lg_path, sm_path]:
-            if os.path.isfile(path):
-                try:
-                    os.remove(path)
-                    deleted.append(os.path.basename(path))
-                    logger.info(f"Deleted: {path}")
-                except Exception as e:
-                    logger.error(f"Delete failed: {str(e)}")
-                    return jsonify({"error": f"Delete failed: {os.path.basename(path)}"}), 500
-            else:
-                not_found.append(os.path.basename(path))
-
-        if deleted:
-            return jsonify({
-                "message": f"Deleted: {', '.join(deleted)}",
-                "not_found": not_found
-            }), 200
-        return jsonify({"error": "No files found to delete"}), 404
+    if deleted:
+        return {
+            "message": f"Deleted: {', '.join(deleted)}",
+            "not_found": not_found
+        }
+    raise HTTPException(status_code=404, detail="No files found to delete")
